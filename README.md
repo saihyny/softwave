@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Softwave Tech Solutions Website
 
-## Getting Started
+A modern, responsive single-page website built with Next.js, TypeScript, and Tailwind CSS.
 
-First, run the development server:
+## 🚀 Features
+
+- **Modern Design**: Clean, professional white background with elegant typography
+- **Smooth Animations**: Framer Motion for fade-in and slide-up effects
+- **Responsive Layout**: Fully responsive from mobile to desktop
+- **Smooth Scrolling**: Navigation with smooth scroll between sections
+- **Social Media Integration**: Links to all social media platforms
+- **Contact Information**: Complete contact details with Google Maps integration
+- **Contact Form**: Functional contact form with Resend email integration
+
+## 📁 Project Structure
+
+```
+app/
+├── components/
+│   ├── Navbar.tsx          # Navigation bar with smooth scroll
+│   ├── Hero.tsx            # Hero section with company name and tagline
+│   ├── About.tsx           # About section with social links
+│   ├── MissionVision.tsx   # Mission & Vision cards
+│   ├── Services.tsx        # Services grid layout
+│   ├── Team.tsx            # Team section with profiles
+│   ├── Contact.tsx         # Contact information and footer
+│   └── ContactForm.tsx     # Contact form component
+├── api/
+│   └── contact/
+│       └── route.ts        # API route for handling form submissions
+├── page.tsx                # Main page assembling all components
+├── layout.tsx              # Root layout with metadata
+└── globals.css             # Global styles
+```
+
+## 🛠️ Tech Stack
+
+- **Next.js 16** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **Framer Motion** (animations)
+- **Lucide React** (icons)
+- **Resend** (email service)
+
+## 🎨 Design Guidelines
+
+- Background: White
+- Text: Dark gray (`text-gray-800`)
+- Accent Color: Soft blue (`#2563eb`)
+- Max Width: `max-w-7xl mx-auto px-6`
+- Hover Effects: `hover:scale-105` on cards
+
+## 📄 Sections
+
+1. **Hero**: Company name, tagline, and CTA button
+2. **About**: Company information and social media links
+3. **Mission & Vision**: Two-column cards with mission and vision
+4. **Services**: Grid layout with 5 service categories
+5. **Team**: Team culture and leadership profiles
+6. **Contact**: Contact details, business hours, contact form, and footer
+
+## 📧 Contact Form
+
+The contact form sends emails using Resend API. When a user submits the form:
+- The form data is sent to `/api/contact`
+- An email is sent to `info@softwavetech.in` and `softwavetechsolutions@gmail.com`
+- The user receives a success/error message
+
+## 🚀 Getting Started
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Configure Environment Variables
+
+1. Copy the `.env.example` file to `.env.local`:
+```bash
+cp .env.example .env.local
+```
+
+2. Get your Resend API key from [https://resend.com/api-keys](https://resend.com/api-keys)
+
+3. Add your API key to `.env.local`:
+```
+RESEND_API_KEY=your_resend_api_key_here
+```
+
+4. Update the `from` email address in `app/api/contact/route.ts` to use your verified domain email address.
+
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 📝 License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2025 Softwave Tech Solutions. All rights reserved.
