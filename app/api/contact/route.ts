@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+const resend = re_GWo3581o_MtCR8hgrfwS39bQnpmSMcF1T
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: 'Softwave Tech Solutions <onboarding@resend.dev>', // Update this with your verified domain
-      to: ['info@softwavetech.in', 'softwavetechsolutions@gmail.com'],
+      to: ['softwavetechsolutions@gmail.com'],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
