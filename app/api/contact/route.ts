@@ -1,17 +1,18 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = "re_GWo3581o_MtCR8hgrfwS39bQnpmSMcF1T"
-
 export async function POST(request: NextRequest) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
     // Check if Resend is configured
-    if (!resend) {
+    if (!apiKey) {
       return NextResponse.json(
         { error: 'Email service is not configured. Please set RESEND_API_KEY in your environment variables.' },
         { status: 500 }
       );
     }
+
+    const resend = new Resend(apiKey);
 
     const body = await request.json();
     const { name, email, phone, message } = body;
@@ -25,7 +26,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Send email using Resend
-    const { data, error } = await resend.emails.send({
+    const response = await resend.emails.send({
       from: 'Softwave Tech Solutions <onboarding@resend.dev>', // Update this with your verified domain
       to: ['softwavetechsolutionsprivateli@gmail.com'],
       subject: `New Contact Form Submission from ${name}`,
@@ -44,16 +45,8 @@ export async function POST(request: NextRequest) {
       `,
     });
 
-    if (error) {
-      console.error('Resend error:', error);
-      return NextResponse.json(
-        { error: 'Failed to send email' },
-        { status: 500 }
-      );
-    }
-
     return NextResponse.json(
-      { message: 'Email sent successfully', data },
+      { message: 'Email sent successfully', data: response },
       { status: 200 }
     );
   } catch (error) {
@@ -64,4 +57,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
